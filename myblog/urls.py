@@ -21,5 +21,7 @@ urlpatterns = [
     url(r'^(?P<id>\d+)/$', 'article.views.detail',name='detail'),
     url(r'^test/$', 'article.views.test'),
     url(r'^about/$', 'article.views.about'),
+    url(r'^archives/$', 'article.views.archives',name='archives'),
+    url(r'^tag(?P<tag>\w+)/$', 'article.views.search_tag', name = 'search_tag'),
     # url(r'^home1/$', 'article.views.home1'),
 ]

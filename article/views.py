@@ -36,3 +36,15 @@ def about(request):
 		about=About(name='zxgao',sex='male',age=age_now,word='Just a man, just a fulture',intro='I\'m handsome, and a code')
 		about.save()
 	return render_to_response('about.html',{'about':about[0]})
+def archives(request):
+	try:
+		post_list=Article.objects.all()
+	except Article.DoesNotExist:
+		raise Http404
+	return render(request, "archives.html",{'post_list':post_list,'error':False})
+def search_tag(request,tag):
+	try:
+		post_list=Article.objects.filter(category__iexact=tag)
+	except Article.DoesNotExist:
+		raise Http404
+	return render(request, "tag.html",{'post_list':post_list})
